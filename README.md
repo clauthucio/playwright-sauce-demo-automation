@@ -37,6 +37,8 @@ Testes relacionados ao processo de autenticação do usuário.
 **Resultado Esperado:** Usuário autenticado e logado no sistema
 **Pós-condição:** Usuário redirecionado para tela de produtos
 
+| Cenário                                   | Descrição                                                                 |
+|------------------------------------------|---------------------------------------------------------------------------|
 | ❌ Não deve logar com senha incorreta     | Garante que o sistema rejeita login com credenciais inválidas.           |
 
 **TST-0002 - Login Inválido**
@@ -53,6 +55,8 @@ Testes relacionados ao processo de autenticação do usuário.
 **Resultado Esperado:** Pop-up informando que usuário e/ou senha não são válidos
 **Pós-condição:** Permanecer na tela de login
 
+| Cenário                                   | Descrição                                                                 |
+|------------------------------------------|---------------------------------------------------------------------------|
 | 🚫 Não deve logar com usuário bloqueado   | Verifica que usuários bloqueados recebem a mensagem adequada.            |
 
 **TST-0003 - Login Bloqueado**
@@ -69,6 +73,8 @@ Testes relacionados ao processo de autenticação do usuário.
 **Resultado Esperado:** Pop-up informando que usuário está bloqueado
 **Pós-condição:** Permanecer na tela de login
 
+| Cenário                                   | Descrição                                                                 |
+|------------------------------------------|---------------------------------------------------------------------------|
 | 🔓 Deve deslogar                          | Após login bem-sucedido, verifica se o logout funciona corretamente.     |
 
 **TST-0004 - Logout**
@@ -104,6 +110,8 @@ Testes relacionados à adição e remoção de produtos no carrinho de compras.
 **Resultado Esperado:** Item adicionado ao carrinho
 **Pós-condição:** Item adicionado ao carrinho e contador de itens incrementado
 
+| Cenário                                   | Descrição                                                                 |
+|------------------------------------------|---------------------------------------------------------------------------|
 | ➖ Remover item do carrinho              | Remove um item do carrinho e verifica se o badge de quantidade é zerado. |
 
 **TST-0006 - Remove item ao carrinho**
