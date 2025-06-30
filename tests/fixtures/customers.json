@@ -1,0 +1,17 @@
+{
+    "clienteValido": {
+        "firstname": "João",
+        "lastname": "Silva",
+        "zipcode": "01000-000"
+    },
+    "clienteSemLastName": {
+        "firstname": "João",
+        "lastname": "",
+        "zipcode": "01000-000"
+    },
+    "clienteSemZipCode": {
+        "firstname": "João",
+        "lastname": "Silva",
+        "zipcode": ""
+    }
+}
