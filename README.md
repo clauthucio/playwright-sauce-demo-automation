@@ -22,6 +22,7 @@ Testes relacionados ao processo de autenticação do usuário.
 | Cenário                                   | Descrição                                                                 |
 |------------------------------------------|---------------------------------------------------------------------------|
 | ✅ Deve logar                             | Verifica se um usuário válido consegue fazer login com sucesso.           |
+
 **TST-0001 - Login Válido**
 **Funcionalidade:** Tela de Login
 **Descrição:** Verificar login com usuário válido
@@ -37,6 +38,7 @@ Testes relacionados ao processo de autenticação do usuário.
 **Pós-condição:** Usuário redirecionado para tela de produtos
 
 | ❌ Não deve logar com senha incorreta     | Garante que o sistema rejeita login com credenciais inválidas.           |
+
 **TST-0002 - Login Inválido**
 **Funcionalidade:** Tela de Login
 **Descrição:** Verificar login com usuário válido e senha inválida
@@ -52,6 +54,7 @@ Testes relacionados ao processo de autenticação do usuário.
 **Pós-condição:** Permanecer na tela de login
 
 | 🚫 Não deve logar com usuário bloqueado   | Verifica que usuários bloqueados recebem a mensagem adequada.            |
+
 **TST-0003 - Login Bloqueado**
 **Funcionalidade:** Tela de Login
 **Descrição:** Verificar login com usuário bloqueado
@@ -67,6 +70,7 @@ Testes relacionados ao processo de autenticação do usuário.
 **Pós-condição:** Permanecer na tela de login
 
 | 🔓 Deve deslogar                          | Após login bem-sucedido, verifica se o logout funciona corretamente.     |
+
 **TST-0004 - Logout**
 **Funcionalidade:** Logout
 **Descrição:** Verificar logout do sistema
@@ -87,6 +91,7 @@ Testes relacionados à adição e remoção de produtos no carrinho de compras.
 | Cenário                                  | Descrição                                                                 |
 |-----------------------------------------|---------------------------------------------------------------------------|
 | ➕ Adicionar item ao carrinho            | Adiciona dois produtos ao carrinho e verifica o contador de itens.       |
+
 **TST-0005 - Adiciona item ao carrinho**
 **Funcionalidade:** Tela do carrinho
 **Descrição:** Verificar inclusão de item ao carrinho
@@ -100,6 +105,7 @@ Testes relacionados à adição e remoção de produtos no carrinho de compras.
 **Pós-condição:** Item adicionado ao carrinho e contador de itens incrementado
 
 | ➖ Remover item do carrinho              | Remove um item do carrinho e verifica se o badge de quantidade é zerado. |
+
 **TST-0006 - Remove item ao carrinho**
 **Funcionalidade:** Tela do carrinho
 **Descrição:** Verificar remoção de item do carrinho
@@ -120,6 +126,7 @@ Testes relacionados à finalização de uma compra com sucesso.
 | Cenário                     | Descrição                                                                 |
 |----------------------------|---------------------------------------------------------------------------|
 | 🧾 Finalizar compra         | Simula o processo completo de checkout, incluindo inserção de dados do cliente e confirmação da compra. |
+
 **TST-0007 - Finalizar compra**
 **Funcionalidade:** Tela do checkout
 **Descrição:** Verificar finalização de compra
