@@ -25,29 +25,33 @@ test.describe('login', () => {
         const loginValido = users.usuarioValido as LoginModel
         await loginPage.go()
         await loginPage.login(loginValido)
-        await productPage.shouldBeLogged()
+        const title = await productPage.getPageTitle()
+        await expect(title).toBeVisible()
     })
 
     test('não deve logar senha incorreta', async () => {
         const loginInvalido = users.usuarioInvalido as LoginModel
         await loginPage.go()
         await loginPage.login(loginInvalido)
-        await loginPage.shouldNotLogin()
+        const error = await loginPage.getErrorMessage('Epic sadface: Username and password do not match any user in this service')
+        await expect(error).toBeVisible()
     })
 
     test('não deve logar usuario bloqueado', async () => {
         const loginBloqueado = users.usuarioBloqueado as LoginModel
         await loginPage.go()
         await loginPage.login(loginBloqueado)
-        await loginPage.shouldBeBlocked()
+        const error = await loginPage.getErrorMessage('Epic sadface: Sorry, this user has been locked out.')
+        await expect(error).toBeVisible()
     })
 
     test('deve deslogar', async () => {
         const loginValido = users.usuarioValido as LoginModel
         await loginPage.go()
         await loginPage.login(loginValido)
-        await productPage.shouldBeLogged()
+        const title = await productPage.getPageTitle()
         await productPage.logout()
+        await expect(title).not.toBeVisible()
     })
 })
 
@@ -58,7 +62,9 @@ test.describe('carrinho', () => {
         await loginPage.login(loginValido)
         await productPage.addItemToCart('Sauce Labs Backpack')
         await productPage.addItemToCart('Sauce Labs Bike Light')
-        await productPage.checkCartBadge(2)
+        const badge = await cartPage.getCartBadge()
+        await expect(badge).toBeVisible()
+        await expect(badge).toHaveText('2')
     })
 
     test('remover item do carrinho', async () => {
@@ -66,27 +72,41 @@ test.describe('carrinho', () => {
         await loginPage.go()
         await loginPage.login(loginValido)
         await productPage.addItemToCart('Sauce Labs Backpack')
-        await productPage.checkCartBadge(1)
+        const badge = await cartPage.getCartBadge()
+        await expect(badge).toHaveText('1')
         await productPage.goToCart()
-        await cartPage.shouldBeOnCart()
+        const title = await cartPage.getPageTitle()
+        await expect(title).toBeVisible()
         await cartPage.removeItemFromCart('Sauce Labs Backpack')
-        await cartPage.checkEmptyCartBadge()
+        await expect(badge).not.toBeVisible()
     })
 })
 
 test.describe('compra', () => {
-        test('finalizar compra', async () => {
+    test('finalizar compra', async () => {
         const loginValido = users.usuarioValido as LoginModel
         await loginPage.go()
         await loginPage.login(loginValido)
         await productPage.addItemToCart('Sauce Labs Backpack')
         await productPage.goToCart()
         await cartPage.goToCheckout()
-        await checkoutPage.shouldBeOnCheckoutCustomerInformation()
+
+        const titleInformation = await checkoutPage.getPageTitle('Checkout: Your Information')
+        await expect(titleInformation).toBeVisible()
+
         const clienteValido = customers.clienteValido as CustomerModel
-        await checkoutPage.customerInformation(clienteValido)
-        await checkoutPage.shouldBeOnCheckoutOverview()
+        await checkoutPage.fillCustomerInformation(clienteValido)
+
+        const titleOverview = await checkoutPage.getPageTitle('Checkout: Overview')
+        await expect(titleOverview).toBeVisible()
+
         await checkoutPage.goToFinishOrder()
-        await checkoutPage.shouldBeOnCheckoutComplete()
+
+        const titleComplete = await checkoutPage.getPageTitle('Checkout: Complete!')
+        await expect(titleComplete).toBeVisible()
+
+        const confirmation = await checkoutPage.getOrderConfirmation()
+        await expect(confirmation).toBeVisible()
+
     })
 })
